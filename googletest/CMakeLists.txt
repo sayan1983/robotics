@@ -146,4 +146,4 @@ target_link_libraries(gtest_main PUBLIC gtest)
 # Install rules
 install_project(gtest gtest_main)
 
-cxx_test(robo-test gtest_main ../source/MazeSingleSearch.cpp ../source/MazeHallway.cpp)
+cxx_test(robo-test gtest_main ../source/MazeSingleSearch.cpp ../source/MazeHallway.cpp ../source/MazeWayOut.cpp ../source/MazeWindPath.cpp)

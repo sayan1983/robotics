@@ -1,9 +1,11 @@
 
 #include "MazeSingleSearch.hpp"
 #include "MazeHallway.hpp"
+#include "MazeWayOut.hpp"
+#include "MazeWindPath.hpp"
+
 #include "gtest/gtest.h"
 namespace {
-// In this example, we test the MyString class (a simple string).
 
 TEST(MazeSingleSearch, InputData) {
     MazeSingleSearch obj;
@@ -83,6 +85,92 @@ TEST(MazeHallWay, InputData_Zero) {
     vector<int> output;
     output = obj.CheckHallway(input1);
     EXPECT_EQ(output.size(), 0);
+}
+    
+TEST(MazeWayOut, InputData) {
+    MazeWayOut obj;
+    vector<vector<int>> input1 {{1,1,1,0,1}, {1,1,1,0,1}, {1,1,1,0,1}, {1,1,1,0,1}, {1,1,1,0,1}};
+    
+    vector <pair<int,int>> output = obj.CheckInOutPoint(input1);
+    
+    EXPECT_EQ(output.size(), 2);
+    
+    EXPECT_EQ(output[0].first, 0);
+    EXPECT_EQ(output[0].second, 3);
+    
+    EXPECT_EQ(output[1].first, 4);
+    EXPECT_EQ(output[1].second, 3);
+}
+    
+TEST(MazeWayOut, InputData1) {
+    MazeWayOut obj;
+    vector<vector<int>> input1 {{1,0,1,1,1}, {1,0,0,0,1}, {1,0,0,0,1}, {1,1,1,0,1}, {1,1,1,0,1}};
+        
+    vector <pair<int,int>> output = obj.CheckInOutPoint(input1);
+        
+    EXPECT_EQ(output.size(), 2);
+        
+    EXPECT_EQ(output[0].first, 0);
+    EXPECT_EQ(output[0].second, 1);
+        
+    EXPECT_EQ(output[1].first, 4);
+    EXPECT_EQ(output[1].second, 3);
+}
+    
+TEST(MazeWindPath, InputData) {
+    MazeWindPath obj;
+    vector<vector<int>> input1 {{1,1,1,0,1}, {1,1,1,0,1}, {1,1,1,0,1}, {1,1,1,0,1}, {1,1,1,0,1}};
+    
+    vector <pair<int,int>> output = obj.CheckWindPath(input1);
+    
+    EXPECT_EQ(output.size(), 5);
+    
+    EXPECT_EQ(output[0].first, 0);
+    EXPECT_EQ(output[0].second, 3);
+    
+    EXPECT_EQ(output[1].first, 1);
+    EXPECT_EQ(output[1].second, 3);
+    
+    EXPECT_EQ(output[2].first, 2);
+    EXPECT_EQ(output[2].second, 3);
+    
+    EXPECT_EQ(output[3].first, 3);
+    EXPECT_EQ(output[3].second, 3);
+    
+    EXPECT_EQ(output[4].first, 4);
+    EXPECT_EQ(output[4].second, 3);
+    
+}
+    
+TEST(MazeWindPath, InputData1) {
+    MazeWindPath obj;
+    vector<vector<int>> input1 {{1,0,1,1,1}, {1,0,0,0,1}, {1,0,0,0,1}, {1,1,1,0,1}, {1,1,1,0,1}};
+        
+    vector <pair<int,int>> output = obj.CheckWindPath(input1);
+        
+    EXPECT_EQ(output.size(), 7);
+        
+    EXPECT_EQ(output[0].first, 0);
+    EXPECT_EQ(output[0].second, 1);
+        
+    EXPECT_EQ(output[1].first, 1);
+    EXPECT_EQ(output[1].second, 1);
+        
+    EXPECT_EQ(output[2].first, 2);
+    EXPECT_EQ(output[2].second, 1);
+        
+    EXPECT_EQ(output[3].first, 2);
+    EXPECT_EQ(output[3].second, 2);
+        
+    EXPECT_EQ(output[4].first, 2);
+    EXPECT_EQ(output[4].second, 3);
+    
+    EXPECT_EQ(output[5].first, 3);
+    EXPECT_EQ(output[5].second, 3);
+    
+    EXPECT_EQ(output[6].first, 4);
+    EXPECT_EQ(output[6].second, 3);
+        
 }
 
 }  // namespace

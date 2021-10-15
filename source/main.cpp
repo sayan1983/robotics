@@ -5,9 +5,10 @@
 //  Created by Sayan Ghosh on 10/13/21.
 //
 
-#include <stdio.h>
 #include "MazeSingleSearch.hpp"
 #include "MazeHallway.hpp"
+#include "MazeWayOut.hpp"
+#include "MazeWindPath.hpp"
 
 #include <iostream>
 #include <string>
@@ -72,6 +73,23 @@ int main(int argc, char* argv[]) {
         }
         if (isHallway == false) {
             cout << "No Hallway positions available " <<endl;
+        }
+    } else if (story == "3") {
+        MazeWayOut obj;
+        vector<vector<int>> input1 {{1,0,1,1,1}, {1,0,0,0,1}, {1,0,0,0,1}, {1,1,1,0,1}, {1,1,1,0,1}};
+        vector <pair<int,int>> output = obj.CheckInOutPoint(input1);
+        
+        cout << "Input point is " << "[" << output[0].first << "]" << "[" << output[0].second << "]" << endl;
+        cout << "Ouput point is " << "[" << output[1].first << "]" << "[" << output[1].second << "]" << endl;
+        
+    } else if (story == "4") {
+        MazeWindPath obj;
+        vector<vector<int>> input1 {{1,0,1,1,1}, {1,0,0,0,1}, {1,0,0,0,1}, {1,1,1,0,1}, {1,1,1,0,1}};
+        
+        vector <pair<int,int>> output = obj.CheckWindPath(input1);
+        
+        for (auto data : output) {
+            cout << "Tracing Point " << "[" << data.first << "]" << "[" << data.second << "]" << endl;
         }
     }
     
