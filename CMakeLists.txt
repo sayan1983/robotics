@@ -11,7 +11,7 @@ set(EXEC robotics)
 set(CMAKE_CXX_STANDARD 11)
 
 # I../includes
-include_directories(source/Robo)
+include_directories(source)
 
 # puts all .cpp files inside src to the SOURCES variable
 file(GLOB SOURCES source/*.cpp)

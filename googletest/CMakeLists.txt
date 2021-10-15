@@ -114,7 +114,7 @@ set(gtest_build_include_dirs
   "${gtest_SOURCE_DIR}/include"
   "${gtest_SOURCE_DIR}")
 include_directories(${gtest_build_include_dirs})
-include_directories(../source/Robo/)
+include_directories(../source/)
 
 ########################################################################
 #
@@ -146,4 +146,4 @@ target_link_libraries(gtest_main PUBLIC gtest)
 # Install rules
 install_project(gtest gtest_main)
 
-cxx_test(robo-test gtest_main ../source/Robo/MazeSingleSearch.cpp ../source/Robo/MazeHallway.cpp)
+cxx_test(robo-test gtest_main ../source/MazeSingleSearch.cpp ../source/MazeHallway.cpp)
