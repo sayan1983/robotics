@@ -25,6 +25,15 @@ public:
     
 protected:
     vector<pair<int,int>> CheckWayOut(vector<vector<int>>);
+    
+private:
+    bool DoOperation(int x,
+                     int y,
+                     vector<vector<bool>>& visited,
+                     vector<vector<bool>>& path);
+    vector<vector<int>>  m_input;
+    int m_endx;
+    int m_endy;
 };
 
 #endif /* MazeWayOut_hpp */

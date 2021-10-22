@@ -9,6 +9,7 @@
 #include "MazeHallway.hpp"
 #include "MazeWayOut.hpp"
 #include "MazeWindPath.hpp"
+#include "MazeWindPathWithDeadEnd.hpp"
 
 #include <iostream>
 #include <string>
@@ -76,7 +77,7 @@ int main(int argc, char* argv[]) {
         }
     } else if (story == "3") {
         MazeWayOut obj;
-        vector<vector<int>> input1 {{1,0,1,1,1}, {1,0,0,0,1}, {1,0,0,0,1}, {1,1,1,0,1}, {1,1,1,0,1}};
+        vector<vector<int>> input1 {{1,0,1,1,1}, {1,0,1,1,1}, {1,0,0,0,1}, {1,1,1,0,1}, {1,1,1,0,1}};
         vector <pair<int,int>> output = obj.CheckInOutPoint(input1);
         
         cout << "Input point is " << "[" << output[0].first << "]" << "[" << output[0].second << "]" << endl;
@@ -84,12 +85,21 @@ int main(int argc, char* argv[]) {
         
     } else if (story == "4") {
         MazeWindPath obj;
-        vector<vector<int>> input1 {{1,0,1,1,1}, {1,0,0,0,1}, {1,0,0,0,1}, {1,1,1,0,1}, {1,1,1,0,1}};
+        vector<vector<int>> input1 {{1,0,1,1,1}, {1,0,1,1,1}, {1,0,0,0,1}, {1,1,1,0,1}, {1,1,1,0,1}};
         
         vector <pair<int,int>> output = obj.CheckWindPath(input1);
         
         for (auto data : output) {
-            cout << "Tracing Point " << "[" << data.first << "]" << "[" << data.second << "]" << endl;
+            cout << "Tracking Point " << "[" << data.first << "]" << "[" << data.second << "]" << endl;
+        }
+    } else if (story == "5") {
+        MazeWindPathWithDeadEnd obj;
+        vector<vector<int>> input1 {{1,0,1,1,1}, {1,0,0,0,1}, {1,0,0,0,1}, {1,1,1,0,1}, {1,1,1,0,1}};
+        
+        vector <pair<int,int>> output = obj.CheckWindPathWithDeadEnds(input1);
+        
+        for (auto data : output) {
+            cout << "Tracking Point " << "[" << data.first << "]" << "[" << data.second << "]" << endl;
         }
     }
     

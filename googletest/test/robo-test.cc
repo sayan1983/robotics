@@ -3,6 +3,7 @@
 #include "MazeHallway.hpp"
 #include "MazeWayOut.hpp"
 #include "MazeWindPath.hpp"
+#include "MazeWindPathWithDeadEnd.hpp"
 
 #include "gtest/gtest.h"
 namespace {
@@ -144,7 +145,7 @@ TEST(MazeWindPath, InputData) {
     
 TEST(MazeWindPath, InputData1) {
     MazeWindPath obj;
-    vector<vector<int>> input1 {{1,0,1,1,1}, {1,0,0,0,1}, {1,0,0,0,1}, {1,1,1,0,1}, {1,1,1,0,1}};
+    vector<vector<int>> input1 {{1,0,1,1,1}, {1,0,1,1,1}, {1,0,0,0,1}, {1,1,1,0,1}, {1,1,1,0,1}};
         
     vector <pair<int,int>> output = obj.CheckWindPath(input1);
         
@@ -171,6 +172,72 @@ TEST(MazeWindPath, InputData1) {
     EXPECT_EQ(output[6].first, 4);
     EXPECT_EQ(output[6].second, 3);
         
+}
+    
+TEST(MazeWindPathWithDeadEnd, InputData) {
+    MazeWindPathWithDeadEnd obj;
+    vector<vector<int>> input {{1,0,1,1,1}, {1,0,0,0,1}, {1,0,0,0,1}, {1,1,1,0,1}, {1,1,1,0,1}};
+        
+    vector <pair<int,int>> output = obj.CheckWindPathWithDeadEnds(input);
+        
+    EXPECT_EQ(output.size(), 9);
+        
+    EXPECT_EQ(output[0].first, 0);
+    EXPECT_EQ(output[0].second, 1);
+        
+    EXPECT_EQ(output[1].first, 1);
+    EXPECT_EQ(output[1].second, 1);
+        
+    EXPECT_EQ(output[2].first, 1);
+    EXPECT_EQ(output[2].second, 2);
+        
+    EXPECT_EQ(output[3].first, 1);
+    EXPECT_EQ(output[3].second, 3);
+        
+    EXPECT_EQ(output[4].first, 2);
+    EXPECT_EQ(output[4].second, 1);
+        
+    EXPECT_EQ(output[5].first, 2);
+    EXPECT_EQ(output[5].second, 2);
+        
+    EXPECT_EQ(output[6].first, 2);
+    EXPECT_EQ(output[6].second, 3);
+    
+    EXPECT_EQ(output[7].first, 3);
+    EXPECT_EQ(output[7].second, 3);
+    
+    EXPECT_EQ(output[8].first, 4);
+    EXPECT_EQ(output[8].second, 3);
+}
+    
+TEST(MazeWindPathWithDeadEnd, InputData1) {
+    MazeWindPathWithDeadEnd obj;
+    vector<vector<int>> input {{1,0,1,1,1}, {1,0,1,0,1}, {1,0,0,0,1}, {1,1,1,0,1}, {1,1,1,0,1}};
+        
+    vector <pair<int,int>> output = obj.CheckWindPathWithDeadEnds(input);
+        
+    EXPECT_EQ(output.size(), 7);
+    
+    EXPECT_EQ(output[0].first, 0);
+    EXPECT_EQ(output[0].second, 1);
+    
+    EXPECT_EQ(output[1].first, 1);
+    EXPECT_EQ(output[1].second, 1);
+    
+    EXPECT_EQ(output[2].first, 2);
+    EXPECT_EQ(output[2].second, 1);
+    
+    EXPECT_EQ(output[3].first, 2);
+    EXPECT_EQ(output[3].second, 2);
+    
+    EXPECT_EQ(output[4].first, 2);
+    EXPECT_EQ(output[4].second, 3);
+    
+    EXPECT_EQ(output[5].first, 3);
+    EXPECT_EQ(output[5].second, 3);
+    
+    EXPECT_EQ(output[6].first, 4);
+    EXPECT_EQ(output[6].second, 3);
 }
 
 }  // namespace
